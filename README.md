@@ -58,13 +58,13 @@ python -m udg.cli nodal-dg
 ### Step 3: Run the entropy-stable DG solver (Gassner et al., 2013)
 
 ```bash
-python -m udg.cli entropy-stable-dg
+python -m udg.cli entropy-dg
 ```
 
 ### Step 4: Run the upwind summation-by-parts DG solver
 
 ```bash
-python -m udg.cli upwind-sbp-dg
+python -m udg.cli upwind-dg
 ```
 
 ## Development
