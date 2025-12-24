@@ -14,6 +14,7 @@ help:
 
 init:
 	uv sync --all-extras
+	pre-commit install -f -t pre-push -t pre-commit
 
 install:
 	uv pip install -e .
