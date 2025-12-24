@@ -2,15 +2,12 @@
 Upwind DG method
 """
 
-import itertools as it
 from typing import Any, SupportsInt
 
-import matplotlib.pyplot as plt
 import numpy as np
-from mpltools import annotation
 from numpy.typing import NDArray
 
-from udg.common import mul, pa, rk4a, rk4b, rk4c, ta
+from udg.common import mul, rk4a, rk4b, rk4c, run_solver
 from udg.quadratures import jac_nodal_basis_at, nodal_basis_at, ortho_basis_at, zwglj
 
 
@@ -130,27 +127,4 @@ def main(_p: SupportsInt, _ne: SupportsInt) -> float:
 
 
 def run() -> None:
-    P = np.arange(1, 4, 1)
-    N = 2 ** np.arange(2, 7)
-    E = np.zeros((len(P), len(N)))
-    for (i, p), (j, n) in it.product(enumerate(P), enumerate(N)):
-        E[i, j] = main(p, n)
-
-    _fig = plt.figure()
-    ax = plt.gca()
-    colors = ["b", "g", "r", "c", "m", "y", "k", "w"]
-    for j, p in enumerate(P):
-        plt.loglog(1.0 / N, E[j, :], label=f"p={p}", color=colors[p])
-        slope, _intercept = np.polyfit(np.log(1.0 / N[-3:]), np.log(E[j, -3:]), 1)
-        annotation.slope_marker(
-            (1.0 / N[-1], E[j, -1]),
-            (f"{slope:.2f}", 1),
-            ax=ax,
-            poly_kwargs=pa,
-            text_kwargs=ta,
-        )
-
-    plt.tight_layout()
-    plt.autoscale()
-    plt.legend(loc="lower right")
-    plt.savefig("upwinddg_adv.pdf")
+    run_solver(main, "upwinddg_adv.pdf")
