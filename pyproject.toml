@@ -15,7 +15,13 @@ dependencies = [
 udg = "udg.cli:cli"
 
 [project.optional-dependencies]
-dev = ["mypy>=1.19.0", "ruff>=0.14.8", "pre-commit>=4.5.1"]
+dev = [
+    "mypy>=1.19.0",
+    "ruff>=0.14.8",
+    "pre-commit>=4.5.1",
+    "pytest>=8.3.4",
+    "pytest-xdist>=3.5.0",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -90,3 +96,9 @@ disallow_untyped_defs = false
 [[tool.mypy.overrides]]
 module = "udg.quadratures"
 ignore_errors = true
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = ["-ra", "-q", "--strict-markers", "-n=4"]

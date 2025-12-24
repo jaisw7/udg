@@ -8,6 +8,7 @@ help:
 	@echo "  lint           - Run ruff linter"
 	@echo "  format         - Format code with ruff"
 	@echo "  type-check     - Run mypy type checker"
+	@echo "  test           - Run pytest"
 	@echo "  pre-commit     - Run all pre-commit checks"
 	@echo "  setup          - Initial project setup"
 
@@ -44,6 +45,9 @@ format-fix:
 
 type-check:
 	uv run mypy src/
+
+test:
+	uv run pytest tests/ -v
 
 pre-commit: format-fix lint-fix type-check
 	@echo "✓ All pre-commit checks passed"

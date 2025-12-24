@@ -54,16 +54,22 @@ class TestSolverIntegration:
 class TestSolverConvergence:
     """Test that solvers exhibit expected convergence behavior."""
 
-    @pytest.mark.parametrize("solver_main", [semdg.main, nodaldg.main, upwinddg.main, entropydg.main])
+    @pytest.mark.parametrize(
+        "solver_main", [semdg.main, nodaldg.main, upwinddg.main, entropydg.main]
+    )
     def test_error_decreases_with_refinement(self, solver_main):
         """Verify error decreases when mesh is refined (h-refinement)."""
         error_coarse = solver_main(P, 4)
         error_fine = solver_main(P, 8)
         assert error_fine < error_coarse, "Error should decrease with mesh refinement"
 
-    @pytest.mark.parametrize("solver_main", [semdg.main, nodaldg.main, upwinddg.main, entropydg.main])
+    @pytest.mark.parametrize(
+        "solver_main", [semdg.main, nodaldg.main, upwinddg.main, entropydg.main]
+    )
     def test_error_decreases_with_higher_order(self, solver_main):
         """Verify error decreases with higher polynomial order (p-refinement)."""
         error_low_order = solver_main(1, NE)
         error_high_order = solver_main(3, NE)
-        assert error_high_order < error_low_order, "Error should decrease with higher polynomial order"
+        assert error_high_order < error_low_order, (
+            "Error should decrease with higher polynomial order"
+        )
