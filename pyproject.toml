@@ -1,7 +1,8 @@
 [project]
 name = "udg"
-version = "0.1.0"
+version = "0.1.1"
 description = "Upwind summation-by-parts discontinuous galerkin method for solving PDEs"
+readme = "README.md"
 requires-python = ">=3.11,<3.13"
 dependencies = [
     "numpy>=1.26.0",
