@@ -1,44 +1,21 @@
 # UDG - Upwind Discontinuous Galerkin Method
 
+[![PyPI version](https://badge.fury.io/py/udg.svg)](https://pypi.org/project/udg/)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A minimal python implementation of the upwind discontinuous galerkin method for solving scalar advection equations.
 
 ## Installation
 
-### Prerequisites
-
-- Python 3.11+
-- uv (recommended) or pip
-
-### Step 1: Install UV Package Manager
-
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
+pip install udg
 ```
 
-### Step 2: Install Dependencies
+Or with uv:
 
 ```bash
-# Clone the repository
-git clone https://github.com/jaisw7/udg.git
-
-# Switch to the repository directory
-cd udg
-
-# Install project with development dependencies
-uv sync --all-extras
-```
-
-### Step 3: Set Up Git Hooks (Optional but Recommended)
-
-```bash
-# Install pre-commit hooks
-pre-commit install
-```
-
-### Step 4: Set Up virtual environment
-
-```bash
-source .venv/bin/activate
+uv pip install udg
 ```
 
 ## Quick Start
@@ -68,6 +45,24 @@ python -m udg.cli upwind-dg
 ```
 
 ## Development
+
+### Setup
+
+```bash
+# Install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Clone and install
+git clone https://github.com/jaisw7/udg.git
+cd udg
+uv sync --all-extras
+
+# Activate virtual environment
+source .venv/bin/activate
+
+# Install pre-commit hooks (optional)
+pre-commit install
+```
 
 ### Code Quality
 
